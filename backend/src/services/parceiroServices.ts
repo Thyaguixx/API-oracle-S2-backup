@@ -53,6 +53,21 @@ async function GETParceirosNomeId() {
     }
 }
 
+async function GETQuantidadeParceiro() {
+    try{
+        const parceiroQuantidade = await Parceiro.find().countDocuments()
+       
+        if (parceiroQuantidade > 0){
+            return {Sucesso: true, retornoParceiros: parceiroQuantidade}
+        }else{
+            return{Sucesso: false, msg: 'Nenhum usuário encontrado'}
+        }
+    } catch (erro) {
+        console.log(erro);
+        return {Sucesso: false}
+    }
+}
+
 async function GETCursoExpertisesParceiro(idParceiro: string, idExpertise: string) {
     try {
         if (!idParceiro) {
@@ -261,4 +276,5 @@ async function GETParceiroByID(id) {
 
 export {SETParceiro, GETExpertisesPorcentagem, GETParceiros, GETParceirosNomeId,
      GETCursoExpertisesParceiro, atualizarCursosParceiro,
-     atualizarCursosParceiroPorIsCursoFeito, cadastrarNovaExpertiseParceiro, GETParceiroByID}
+     atualizarCursosParceiroPorIsCursoFeito, cadastrarNovaExpertiseParceiro,
+      GETParceiroByID, GETQuantidadeParceiro}

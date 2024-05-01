@@ -25,7 +25,6 @@ export default function Forms(params) {
 
   useEffect(() => {
     GETInicio(params.params.IdParceiro, params.params.IdExpertise)
-    console.log('LISTA' + lista);
   }, [])
 
 
@@ -42,8 +41,6 @@ export default function Forms(params) {
         IdParceiro: IdParceiro
       });
 
-      console.log('RETORNO DA LISTA:  '+ JSON.stringify(lista));
-      console.log("RETORNO DO RETORNO:  "+ JSON.stringify(response.data));
       if (response.data) {
         console.log(response.data.Sucesso);
       }
@@ -82,7 +79,6 @@ export default function Forms(params) {
       <TouchableOpacity
         style={styles.buttonMenu}
         onPress={() => {
-          console.log("oI")
           button();
         }}>
         <View style={styles.buttonText}>

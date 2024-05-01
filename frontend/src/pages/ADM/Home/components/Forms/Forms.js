@@ -43,7 +43,7 @@ export default function Forms() {
         <TouchableOpacity
           style={styles.buttonMenu}
           onPress={() => {
-            button();
+            navigate('DashboardExpertises')
           }}>
           <View style={styles.buttonContainer}>
             <View style={styles.buttonImage}>
@@ -55,7 +55,7 @@ export default function Forms() {
             <View style={styles.buttonText}>
               <Text style={styles.titleButtonMenu}>Dashboards</Text>
               <Text style={styles.subtitleButtonMenu}>
-                Crie um registro para nova empresa parceira
+                Gráficos dos dados do sistema
               </Text>
             </View>
           </View>

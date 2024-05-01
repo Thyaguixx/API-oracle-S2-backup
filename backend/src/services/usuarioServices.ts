@@ -21,6 +21,19 @@ async function GETUsuarios() {
     }
 }
 
+async function GETQuantidadeConsultores() {
+    try {
+        const usuarioQuantidade = await Usuario.find({ tipoUsuario: 'ConsultorAlianca' }).countDocuments();
+        if (usuarioQuantidade) {
+            return { Sucesso: true, retornoUsuarioQuantidade: usuarioQuantidade };
+        }
+    } catch (erro) {
+        console.log(erro);
+        return { Sucesso: false };
+    }
+}
+
+
 async function GETUsuarioByID(id) {
     try{
         // O .lean() faz o retorno do resultado já em um formato de objeto javascript
@@ -62,4 +75,4 @@ async function Login(dados) {
     }
 }
 
-export {SETUsuario, GETUsuarioByID, GETUsuarios, DELUsuario, Login}
+export {SETUsuario, GETUsuarioByID, GETUsuarios, DELUsuario, Login, GETQuantidadeConsultores}

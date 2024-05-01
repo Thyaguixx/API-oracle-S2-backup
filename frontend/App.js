@@ -33,6 +33,8 @@ import Login from './src/pages/LOGIN/login';
 import CadastroStep1 from './src/pages/ADM/CadastroParceiros/step-1/step1';
 import CadastroStep2 from './src/pages/ADM/CadastroParceiros/step-2/step2';
 import CadastroStep3 from './src/pages/ADM/CadastroParceiros/step-3/step3';
+import DashboardExpertise from './src/pages/Graficos/dashboardExpertise/dashboardExepertise';
+import Dashboard from './src/pages/Graficos/dashboard/dashboard';
 
 const AppStack = createNativeStackNavigator()
 //caso queira chamar um component de header que seja padrao nosso, em AppStack.Screen, dentro de option passar header: 'A header configurada nossa'
@@ -48,6 +50,8 @@ function App() {
         <AppStack.Screen name='Parceiros' component={Parceiros} options={{ headerShown: false }} />
         <AppStack.Screen name='ProgressoExpertise' component={ProgressoExpertise} options={{ headerShown: false }} />
         <AppStack.Screen name='ExpertiseCursoParceiro' component={ExpertiseCursoParceiro} options={{ headerShown: false }} />
+        <AppStack.Screen name='DashboardExpertises' component={DashboardExpertise} options={{headerShown: false}} />
+        <AppStack.Screen name='DashboardParceiros' component={Dashboard} options={{headerShown: false}} />
         <AppStack.Screen name='CadastroStep1' component={CadastroStep1} options={{ headerShown: false }} />
         <AppStack.Screen name='CadastroStep2' component={CadastroStep2} options={{ headerShown: false }} />
         <AppStack.Screen name='CadastroStep3' component={CadastroStep3} options={{ headerShown: false }} />

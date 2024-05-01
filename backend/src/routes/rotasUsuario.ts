@@ -1,5 +1,5 @@
 import express from 'express';
-import { DELUsuario, GETUsuarioByID, GETUsuarios, Login, SETUsuario } from '../services/usuarioServices';
+import { DELUsuario, GETQuantidadeConsultores, GETUsuarioByID, GETUsuarios, Login, SETUsuario } from '../services/usuarioServices';
 
 const routerUsuario = express.Router();
 
@@ -35,6 +35,18 @@ routerUsuario.get('/listarUsuarios', async (req, res) => {
         res.send({ Sucesso: true, Retorno: usuarioLista })
     } else {
         res.send({ msg: "Erro ao buscar usuários.", Erro: result })
+    }
+});
+
+routerUsuario.get('/ListarQuantidadeConsultores', async (req, res) => {
+    const result = await GETQuantidadeConsultores()
+
+    if (result?.Sucesso) {
+        const usuarioQuantidade = result.retornoUsuarioQuantidade;
+
+        res.send({ Sucesso: true, Retorno: usuarioQuantidade })
+    } else {
+        res.send({ msg: "Erro ao buscar consultores.", Erro: result })
     }
 });
 
