@@ -3,13 +3,13 @@ import { Animated, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Title from './components/title/title';
 import Main from './components/main/main';
 
-export default function Dashboard() {
+export default function DashboardCursos({route}) {
 
     return (
         <ScrollView>
             <View style={styles.body}>
                 <Title />
-                <Main />
+                <Main params={route.params}/>
             </View>
         </ScrollView>
 
@@ -19,7 +19,7 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
 
     body: {
-        flexGrow: 1,
+        flex: 1,
         backgroundColor: '#C84734',
     }
 })

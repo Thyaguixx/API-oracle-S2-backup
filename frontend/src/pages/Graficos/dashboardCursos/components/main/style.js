@@ -1,59 +1,61 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    scrollViewContent: {
-        flexGrow: 1,
+
+    body: {
+        marginTop: '10%',
         width: '100%',
         height: '100%',
+        justifyContent: "center",
+        alignItems: "center",
+        
+    },
+
+    bodyText: {
+        color: '#313131',
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginLeft: '-15%',
+        marginBottom: '5%'
+    },  
+    fundo: {
         backgroundColor: '#F3F1F1',
         alignItems: 'center',
         marginTop: '10%',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
+        height: 'auto',
     },
-
-    body: {
-        width: '100%',
-        height: '90%',
-        marginTop: '10%',
-        marginLeft:'20%',
-        paddingEnd:'20%',
-
+    container: {
+        backgroundColor: '#F3F1F1',
+        alignItems: 'center',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        height: 'auto',
+        marginBottom: 100
     },
-
-    bodyText: {
-        color: '#313131',
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
+    scrollViewContent: {
+        justifyContent: "center",
+        alignItems: "center",
+       
     },
 
     buttonMenu: {
         borderRadius: 10,
-        width: '100%',
-        height: 150,
-        marginBottom: '5%',
+        width: '92%',
+        height: 130,
+        marginTop: '5%',
         backgroundColor: '#FFFFFF',
         elevation: 2,
-        alignItems: 'center',
+        alignContent: 'center',
         justifyContent: 'center',
     },
 
-    buttonMenu2: {
-        borderRadius: 10,
-        width: '100%',
-        height: 150,
-        marginBottom: '5%',
-        backgroundColor: '#FFFFFF',
-        elevation: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 
 
     buttonContainer: {
-        width: '100%',
-        height: '100%',
+        width: '90%',
+        height: 100,
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
@@ -65,7 +67,6 @@ const styles = StyleSheet.create({
         position: 'relative',
         alignContent: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'blue',
     },
 
     buttonGraph2: {
@@ -104,23 +105,22 @@ const styles = StyleSheet.create({
         width: '60%',
         height: '100%',
         flexDirection: 'column',
-        // backgroundColor: 'red',
+        marginTop: '-8%',
+        marginLeft: '10%'
 
     },
 
     buttonTitle: {
-        marginTop: '8%',
+        marginTop: '12%',
         marginLeft: '5%',
-        // backgroundColor: 'yellow',
     },
 
     buttonSubTitle: {
         marginLeft: '5%',
-        // backgroundColor: 'green',
     },
 
     textTitle: {
-        fontSize: 16,
+        fontSize: 18,
         color: '#313131',
         fontWeight: 'bold',
     },
@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
 
     buttonDescription: {
         marginLeft: '5%',
-        top: '20%',
-        // backgroundColor: 'pink',
+        marginTop: '30%',
+        height: '100%'
     },
 
 
@@ -143,26 +143,12 @@ const styles = StyleSheet.create({
         color: '#313131',
     },
 
-    buttonImage: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        marginRight: 10,
-    },
-    textImageContainer: {
-        marginLeft: 5,
-    },
-    user: {
-        width: 20,
-        height: 20,
-        marginRight: 5,
-        marginLeft: 10,
-    },
-    book: {
-        width: 20,
-        height: 20,
-        marginRight: 5,
-    },
+
+
+
+
+
+
 
 });
 

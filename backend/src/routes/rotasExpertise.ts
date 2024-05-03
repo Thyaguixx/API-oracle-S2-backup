@@ -1,5 +1,5 @@
 import express from 'express';
-import { DELExpertise, GETExpertiseByID, GETExpertises, SETExpertise } from '../services/expertiseServices';
+import { DELExpertise, GETExpertiseByID, GETExpertises, SETExpertise, obterDadosCursosExpertise, obterDadosExpertiseDashboard } from '../services/expertiseServices';
 import { CursoInterface } from 'models/expertise';
 
 const routerExpertise = express.Router();
@@ -38,6 +38,16 @@ routerExpertise.get('/listarExpertises', async (req, res) => {
     }
 });
 
+routerExpertise.get('/GETExpertiseGraficos', async (req, res) => {
+    const result = await obterDadosExpertiseDashboard()
+
+    if (result) {
+        const expertiseLista = result
+        res.send({ Sucesso: true, Retorno: expertiseLista})
+    } else {
+        res.send({ msg: "Erro ao buscar expertises.", Erro: result })
+    }
+});
 
 routerExpertise.get('/listarExpertisesNomeDesID', async (req, res) => {
     const result = await GETExpertises()
@@ -83,6 +93,20 @@ routerExpertise.delete("/deletarExpertise/:id", async (req, res) => {
         res.send({ msg: "Expertise deletado com sucesso.", Sucesso: result?.Sucesso, Retorno: result?.retorno })
     } else {
         res.send({ msg: "Falha ao deletar expertise.", Sucesso: result?.Sucesso, Retorno: result?.retorno })
+    }
+});
+
+
+routerExpertise.get('/GetExpertiseCursosByID/:id', async (req, res) => {
+    const { id } = req.params
+
+    const result = await obterDadosCursosExpertise(id)
+
+    if (result && result) {
+        const expertiseCursos = result
+        res.send({ Sucesso: true, ExpertiseCursos: expertiseCursos })
+    } else {
+        res.send({ msg: "Erro ao buscar expertise.", Erro: result })
     }
 });
 
