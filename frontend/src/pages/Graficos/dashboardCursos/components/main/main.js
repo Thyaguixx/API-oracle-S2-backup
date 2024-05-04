@@ -58,7 +58,7 @@ export default function Main(params) {
                       strokeWidth={15}
                     />
                     <View style={styles.progressTextCircle}>
-                      <Text style={styles.textCircle}>{item.percentualConclusao}%</Text>
+                      <Text style={styles.textCircle}>{Math.round(item.percentualConclusao)}%</Text>
                     </View>
                   </View>
                 </View>

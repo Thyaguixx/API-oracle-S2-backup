@@ -57,7 +57,7 @@ export default function Forms(params) {
     <View style={styles.formContext}>
       <View style={styles.form}>
         <Text style={styles.formText}>
-          Certificações da expertise Cloud Sell que foram concluídas até o
+          Expertises da Track que foram concluídas até o
           momento:
         </Text>
       </View>

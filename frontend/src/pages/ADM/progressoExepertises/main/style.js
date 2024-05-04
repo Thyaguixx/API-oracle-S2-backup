@@ -74,6 +74,79 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     borderRadius: 10,
     marginBottom: 10
+  },
+  title: {
+    fontSize: 17,
+    color: 'black',
+    alignSelf: 'flex-start',
+    marginLeft: 15,
+    paddingBottom:10,
+    fontFamily: 'Verdana',
+    width: '90%',
+    fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#C61900',
+    width: '40%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    padding: 15,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#ffff',
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+  titleModal: {
+    color: '#C61900',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  pickerButton: {
+    width: '50%',
+    marginBottom: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    padding: 10,
+    color: 'black',
+
+
+  },
+  selectedExpertiseText: {
+    color: '#C84734', // Defina a cor do texto aqui
+    fontWeight: 'bold',
+  },
+  picker: {
+    backgroundColor: '#F5F5F5',
+    width: '100%',
+    borderRadius: 10,
+    color: 'black',
+  },
+  selectedExpertisesContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 10,
+    color: 'black',
+  },
+  selectedExpertise: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 8,
+    marginRight: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    borderColor: 'black', // Cor da borda
+    borderWidth: 1, // Largura da borda
+  },
+
+  modalExpertise:{
+    borderColor: '#8A8585',
+    borderWidth: 1,
+    borderRadius: 10,
+    width: '90%',
+    marginLeft: 10,
   }
 });
 

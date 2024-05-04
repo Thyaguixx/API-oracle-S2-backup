@@ -239,7 +239,7 @@ async function atualizarCursosParceiroPorIsCursoFeito(parceiroExpertiseCursos, i
 }
 
 
-async function cadastrarNovaExpertiseParceiro(idParceiro, expertise) {
+async function cadastrarNovaExpertiseParceiro(idParceiro: string, novasExpertises) {
     try {
         // Verifique se o parceiro existe
         const parceiro = await Parceiro.findById(idParceiro);
@@ -247,18 +247,21 @@ async function cadastrarNovaExpertiseParceiro(idParceiro, expertise) {
             throw new Error('Parceiro não encontrado');
         }
 
-        // Verifique se a expertise já existe no parceiro
-        const expertiseExistente = parceiro.ExpertisesParceiro.find(exp => exp.nome === expertise.nome);
-        if (expertiseExistente) {
-            throw new Error('Expertise já cadastrada para este parceiro');
+        // Verifique se as expertises já existem no parceiro
+        for (const novaExpertise of novasExpertises) {
+            const expertiseExistente = parceiro.ExpertisesParceiro.find(exp => exp.nome === novaExpertise.nome);
+            if (expertiseExistente) {
+                throw new Error(`Expertise '${novaExpertise.nome}' já cadastrada para este parceiro`);
+            }
         }
 
-        // Adicione a nova expertise ao parceiro e salve
-        parceiro.ExpertisesParceiro.push(expertise);
+        // Adicione as novas expertises ao parceiro e salve
+        parceiro.ExpertisesParceiro.push(...novasExpertises);
         await parceiro.save();
-        console.log('Expertise cadastrada com sucesso para o parceiro:', parceiro.nome);
+        console.log('Expertises cadastradas com sucesso para o parceiro:', parceiro.nome);
     } catch (error) {
         console.error('Erro ao cadastrar expertise:', error);
+        throw error;
     }
 }
 

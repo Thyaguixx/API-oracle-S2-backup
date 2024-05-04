@@ -96,14 +96,14 @@ routerParceiro.post('/atualizarCursosParceiroPorIsCursoFeito', async (req, res) 
 routerParceiro.post('/cadastrarExpertiseParceiro', async (req, res) => {
     try {
         const idParceiro = req.body.idParceiro;
-        const novaExpertise = req.body.novaExpertise; // Supondo que os dados da nova expertise estejam no corpo da requisição
+        const novasExpertises = req.body.novasExpertises; // Supondo que os dados das novas expertises estejam no corpo da requisição como um array
 
-        await cadastrarNovaExpertiseParceiro(idParceiro, novaExpertise);
+        await cadastrarNovaExpertiseParceiro(idParceiro, novasExpertises);
 
-        res.status(200).send({ msg: "Expertise cadastrada com sucesso." });
+        res.status(200).send({ msg: "Expertises cadastradas com sucesso." });
     } catch (error) {
-        console.error('Erro ao cadastrar expertise:', error);
-        res.status(500).send({ msg: "Erro ao cadastrar expertise.", erro: error });
+        console.error('Erro ao cadastrar expertises:', error);
+        res.status(500).send({ msg: "Erro ao cadastrar expertises.", erro: error });
     }
 });
 

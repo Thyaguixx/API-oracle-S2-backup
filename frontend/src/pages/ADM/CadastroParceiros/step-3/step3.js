@@ -34,7 +34,7 @@ const CustomPicker = ({ options, selectedOptions, onSelectOption, onRemoveOption
                         <Text style={modalStyles.modalTitle}>Selecione uma opção</Text>
                         {options.map((option, index) => (
                             <TouchableOpacity key={index} onPress={() => handleSelectOption(option)}>
-                                <Text style={modalStyles.modalText}>{option}</Text>
+                                <Text style={modalStyles.modalText}>{option.nome}</Text>
                             </TouchableOpacity>
                         ))}
                         <TouchableOpacity onPress={() => setIsOpen(false)} style={modalStyles.modalButton}>
@@ -46,7 +46,7 @@ const CustomPicker = ({ options, selectedOptions, onSelectOption, onRemoveOption
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 10 }}>
                 {selectedOptions.map((option, index) => (
                     <TouchableOpacity key={index} onPress={() => onRemoveOption(index)} style={styles.selectedExpertise}>
-                        <Text style={styles.selectedExpertiseText}>{option}</Text>
+                        <Text style={styles.selectedExpertiseText}>{option.nome}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
@@ -67,11 +67,12 @@ export default function CadastroStep3(parametros) {
     const step1 = JSON.parse(parametros.route.params.Step1)
     const step2 = JSON.parse(parametros.route.params.Step2)
 
-    console.log('step1:  ' + JSON.stringify(step1))
-    console.log('step2:  ' + JSON.stringify(step2))
+    // console.log('step1:  ' + JSON.stringify(step1))
+    // console.log('step2:  ' + JSON.stringify(step2))
 
     const handleExpertiseSelection = (expertise) => {
         setSelectedExpertises([...selectedExpertises, expertise]);
+        console.log('TRACKS selecionadas:  '+ JSON.stringify(selectedExpertises));
     };
 
     const handleRemoveExpertise = (index) => {
@@ -117,15 +118,17 @@ export default function CadastroStep3(parametros) {
             uf: "UF"
         }
 
+        const expertisesParceiro = [];
 
-        const expertisesParceiro = [
-            {
-                idExpertise: "660be7fc9a32d90bf2ea35fa",
-                nome: "Cloud Build",
-                descricao: "Cloud Build",
+        selectedExpertises.forEach(item => {
+            var itemAdd = {
+                idExpertise: item.expertiseID,
+                nome: item.nome,
+                descricao:item.descricao,
                 cursosRealizados: []
             }
-        ];
+            expertisesParceiro.push(itemAdd)
+        });
 
         const dadosParceiro = {
             nome: step1.Nome,
@@ -142,8 +145,6 @@ export default function CadastroStep3(parametros) {
             slogan: slogan,
             ExpertisesParceiro: expertisesParceiro
         };
-
-        console.log('AAAAAAAAAAAAAAAAA:  ' + JSON.stringify(dadosParceiro));
 
         const response = await Axios.post('/cadastrarParceiro', {
             dadosParceiro
@@ -195,10 +196,10 @@ export default function CadastroStep3(parametros) {
                         onChangeText={text => setSlogan(text)}
                     />
 
-                    <Text style={styles.title}>Expertise de interesse</Text>
+                    <Text style={styles.title}>Tracks de interesse</Text>
                     <CustomPicker
-                        options={["Cloud Build", "Cloud Shell", "Cloud Service", "Industry Healthcare", "Licence & Hardware"]}
-                        // options={expertises}
+                        // options={["Cloud Build", "Cloud Shell", "Cloud Service", "Industry Healthcare", "Licence & Hardware"]}
+                        options={expertises}
                         selectedOptions={selectedExpertises}
                         onSelectOption={handleExpertiseSelection}
                         onRemoveOption={handleRemoveExpertise}

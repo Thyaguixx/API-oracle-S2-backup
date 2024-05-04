@@ -130,6 +130,28 @@ async function obterDadosCursosExpertise(idExpertise: string) {
     }
 }
 
+async function obterExpertisesDisponiveis(idParceiro: string) {
+    try {
+        // Encontrar todas as expertises
+        const todasExpertises: ExpertiseInterface[] = await Expertise.find().lean();
+
+        // Encontrar as expertises do parceiro
+        const parceiro: ParceiroInterface | null = await Parceiro.findById(idParceiro).lean();
+        if (!parceiro) {
+            throw new Error(`Parceiro com o ID ${idParceiro} não encontrado.`);
+        }
+        const expertisesParceiro = parceiro.ExpertisesParceiro.map(exp => exp.idExpertise.toString());
+
+        // Filtrar as expertises disponíveis (que o parceiro ainda não possui)
+        const expertisesDisponiveis = todasExpertises.filter(expertise => !expertisesParceiro.includes(expertise._id.toString()));
+
+        return expertisesDisponiveis;
+    } catch (error) {
+        console.error('Erro ao obter expertises disponíveis:', error);
+        throw error;
+    }
+}
+
 
 export {SETExpertise, GETExpertises, GETExpertiseByID, DELExpertise,
-     obterDadosExpertiseDashboard, obterDadosCursosExpertise}
+     obterDadosExpertiseDashboard, obterDadosCursosExpertise, obterExpertisesDisponiveis}

@@ -1,5 +1,5 @@
 import express from 'express';
-import { DELExpertise, GETExpertiseByID, GETExpertises, SETExpertise, obterDadosCursosExpertise, obterDadosExpertiseDashboard } from '../services/expertiseServices';
+import { DELExpertise, GETExpertiseByID, GETExpertises, SETExpertise, obterDadosCursosExpertise, obterDadosExpertiseDashboard, obterExpertisesDisponiveis } from '../services/expertiseServices';
 import { CursoInterface } from 'models/expertise';
 
 const routerExpertise = express.Router();
@@ -54,6 +54,30 @@ routerExpertise.get('/listarExpertisesNomeDesID', async (req, res) => {
 
     if (result) {
         const expertiseLista = result.retornoExpertises
+        const listaExpertise: { expertiseID: string; nome: string; descricao: string; }[] = [];
+
+        // Método com for each
+        expertiseLista?.forEach(expertise => {
+            listaExpertise.push({
+                expertiseID: String(expertise._id),
+                nome: expertise.nome,
+                descricao: expertise.descricao,
+            });
+        })
+
+        res.send({ Sucesso: true, Retorno: listaExpertise})
+    } else {
+        res.send({ msg: "Erro ao buscar expertises.", Erro: result })
+    }
+});
+
+routerExpertise.get('/listarExpertisesNomeDesIDPorParceiro/:id', async (req, res) => {
+    const { id } = req.params
+
+    const result = await obterExpertisesDisponiveis(id)
+
+    if (result) {
+        const expertiseLista = result
         const listaExpertise: { expertiseID: string; nome: string; descricao: string; }[] = [];
 
         // Método com for each
